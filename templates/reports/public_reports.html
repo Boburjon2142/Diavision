@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">Health Reports</span>
+    <h1>AI haftalik va oylik sharhlar</h1>
+</section>
+<section class="wrapper section-grid two">
+    <article class="card"><span class="badge badge-ai">AI haftalik xulosa</span><p>{{ weekly_summary }}</p></article>
+    <article class="card"><span class="badge badge-ai">AI oylik sog‘liq sharhi</span><p>{{ monthly_summary }}</p></article>
+</section>
+{% endblock %}

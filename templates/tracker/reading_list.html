@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper app-showcase-grid">
+    <article class="phone-frame stats-screen">
+        <div class="phone-top">
+            <span>9:41</span>
+            <span>Statistikalar</span>
+        </div>
+        <div class="stats-header-card">
+            <div class="segment-tabs">
+                <span class="active">Hafta</span>
+                <span>Oy</span>
+                <span>Yil</span>
+            </div>
+            <div class="stats-range">
+                <strong>{{ summary.average }} mmol/L</strong>
+                <small>AI trend insight</small>
+            </div>
+            <div class="line-graph">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="stats-pill-row">
+            <span>Past</span>
+            <span>Min 5.2</span>
+            <span>O‘rtacha {{ summary.average }}</span>
+        </div>
+        <div class="mini-card">
+            <strong>AI izohi</strong>
+            <p>{{ summary.insight }}</p>
+        </div>
+    </article>
+    <article class="phone-frame list-screen">
+        <div class="phone-top">
+            <span>Qon shakari</span>
+            <a class="screen-link" href="{% url 'tracker:create' %}">Qo‘shish</a>
+        </div>
+        <div class="screen-list">
+            {% for reading in readings %}
+                <div class="screen-list-item">
+                    <div>
+                        <strong>{{ reading.get_reading_type_display }}</strong>
+                        <small>{{ reading.measured_at|date:"d M, H:i" }}</small>
+                    </div>
+                    <div class="list-value">
+                        <b>{{ reading.value }}</b>
+                        {% if reading.is_unusual %}<span class="badge badge-warn">Noodatiy</span>{% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <div class="screen-list-item">
+                    <div>
+                        <strong>Ma’lumot yo‘q</strong>
+                        <small>Hozircha o‘lchovlar mavjud emas.</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </article>
+</section>
+{% endblock %}

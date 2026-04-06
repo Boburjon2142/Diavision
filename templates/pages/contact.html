@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">Aloqa</span>
+    <h1>Murojaat qoldiring</h1>
+    <p>Hududiy jamoa yoki loyiha operatori siz bilan bog‘lanadi.</p>
+</section>
+<section class="wrapper split-section">
+    <form method="post" class="card form-card">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Yuborish</button>
+    </form>
+    <div class="card">
+        <span class="badge badge-ai">AI support ready</span>
+        <h3>AI monitoringi faol</h3>
+        <p>Platforma foydalanuvchi signallari va kontakt oqimini keyingi integratsiyalar uchun tayyor arxitekturada saqlaydi.</p>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,20 @@
+<footer class="site-footer">
+    <div class="wrapper footer-grid">
+        <div>
+            <h3>DiaVision AI</h3>
+            <p>AI va IoT qurilmalar oqimi yordamida xavfni erta aniqlash, monitoringni soddalashtirish va sog‘lom odatlarni qo‘llab-quvvatlash uchun ishlab chiqilgan platforma.</p>
+        </div>
+        <div>
+            <h4>Asosiy bo‘limlar</h4>
+            <a href="{% url 'riskcheck:public_check' %}">AI Risk Check</a>
+            <a href="{% url 'tracker:public_overview' %}">Sugar Tracker</a>
+            <a href="{% url 'nutrition:assistant' %}">AI Food Assistant</a>
+            <a href="{% url 'reports:public_reports' %}">Health Reports</a>
+        </div>
+        <div>
+            <h4>Ishonch va xavfsizlik</h4>
+            <p>{{ medical_disclaimer }}</p>
+            <p>Bluetooth glucometer, smart band va sensor gateway integratsiyasi uchun ko‘rinadigan IoT tayyorgarligi mavjud.</p>
+        </div>
+    </div>
+</footer>

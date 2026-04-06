@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">Yangi o‘lchov</span>
+    <h1>Qon shakari ko‘rsatkichini kiriting</h1>
+</section>
+<section class="wrapper">
+    <form method="post" class="card form-card">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Saqlash</button>
+    </form>
+</section>
+{% endblock %}

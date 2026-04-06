@@ -1,0 +1,56 @@
+[
+  {
+    "model": "pages.article",
+    "pk": 1,
+    "fields": {
+      "created_at": "2026-04-06T09:00:00Z",
+      "updated_at": "2026-04-06T09:00:00Z",
+      "title": "Kunlik piyoda yurish diabet xavfini kamaytirishga yordam beradi",
+      "slug": "kunlik-piyoda-yurish",
+      "excerpt": "Har kuni 30 daqiqa yurish insulin sezgirligini qo‘llab-quvvatlashi mumkin.",
+      "body": "AI va jamoat salomatligi yondashuvi bo‘yicha eng samarali odatlardan biri muntazam yurishdir.",
+      "category": "Profilaktika",
+      "is_published": true,
+      "featured": true
+    }
+  },
+  {
+    "model": "pages.article",
+    "pk": 2,
+    "fields": {
+      "created_at": "2026-04-06T09:00:00Z",
+      "updated_at": "2026-04-06T09:00:00Z",
+      "title": "Kechki ovqat porsiyasi va shakar nazorati",
+      "slug": "kechki-ovqat-porsiyasi",
+      "excerpt": "Kechki ovqatda porsiya nazorati glyukemik yuklamani kamaytirishi mumkin.",
+      "body": "AI tavsiyalari ko‘pincha kechki ovqat porsiyasini qayta ko‘rib chiqishni taklif qiladi.",
+      "category": "Oziqlanish",
+      "is_published": true,
+      "featured": true
+    }
+  },
+  {
+    "model": "pages.faq",
+    "pk": 1,
+    "fields": {
+      "created_at": "2026-04-06T09:00:00Z",
+      "updated_at": "2026-04-06T09:00:00Z",
+      "question": "Platforma tashxis qo‘yadimi?",
+      "answer": "Yo‘q. Platforma AI yordamida xavf va trendlarni ko‘rsatadi, lekin shifokor maslahatini almashtirmaydi.",
+      "display_order": 1,
+      "is_active": true
+    }
+  },
+  {
+    "model": "pages.faq",
+    "pk": 2,
+    "fields": {
+      "created_at": "2026-04-06T09:00:00Z",
+      "updated_at": "2026-04-06T09:00:00Z",
+      "question": "AI qanday ishlaydi?",
+      "answer": "Hozircha AI izohlanadigan qoidaviy engine orqali xavf, trend va tavsiyalarni shakllantiradi.",
+      "display_order": 2,
+      "is_active": true
+    }
+  }
+]

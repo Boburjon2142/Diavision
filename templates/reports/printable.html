@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper printable-sheet">
+    <span class="eyebrow">Printable report</span>
+    <h1>{{ period|title }} hisobot</h1>
+    <p>O‘rtacha shakar: {{ report.average_sugar }} mmol/L</p>
+    <p>Trend: {{ report.trend_direction }}</p>
+    <p>Moslashuv: {{ report.adherence_score }}%</p>
+    <p>{{ report.executive_summary }}</p>
+    <p>{{ report.recommendation }}</p>
+    <p class="muted">{{ medical_disclaimer }}</p>
+</section>
+{% endblock %}

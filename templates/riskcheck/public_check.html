@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">AI Risk Check</span>
+    <h1>Diabet xavfini AI yordamida baholang</h1>
+    <p>Qoidaviy AI scoring engine sizning asosiy xavf omillaringizni izohli tarzda chiqaradi.</p>
+</section>
+<section class="wrapper split-section">
+    <form method="post" class="card form-card">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">AI tahlilni ishga tushirish</button>
+    </form>
+    {% if result %}
+        <div class="stack">
+            <article class="card result-card">
+                <div class="card-top"><span class="badge badge-ai">AI natijasi</span><strong>{{ result.risk_percentage }}%</strong></div>
+                <h3>Xavf darajasi: {{ result.risk_level }}</h3>
+                <p>{{ result.warning }}</p>
+                <p>{{ result.next_steps }}</p>
+            </article>
+            {% include "components/risk_explanation.html" with result=result %}
+        </div>
+    {% else %}
+        <div class="stack">
+            <div class="card"><span class="badge badge-ai">AI izohi</span><p>Natija chiqqach, AI nega shu bahoni berganini sabablar bilan ko‘rsatadi.</p></div>
+            <div class="card"><span class="badge badge-ai">AI tavsiyasi</span><p>Turmush tarzi, monitoring va keyingi qadamlar bo‘yicha mas’uliyatli tavsiyalar beriladi.</p></div>
+        </div>
+    {% endif %}
+</section>
+{% endblock %}

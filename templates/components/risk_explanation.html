@@ -1,0 +1,16 @@
+<section class="card">
+    <div class="card-top">
+        <span class="badge badge-ai">AI izohi</span>
+        <strong>Nega bu natija chiqdi?</strong>
+    </div>
+    <p>{{ assessment.ai_explanation|default:result.explanation }}</p>
+    <ul class="clean-list">
+        {% for factor in assessment.risk_factors.all %}
+            <li><strong>{{ factor.factor_name }}:</strong> {{ factor.factor_reason }}</li>
+        {% empty %}
+            {% for factor in result.factors %}
+                <li><strong>{{ factor.name }}:</strong> {{ factor.reason }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+</section>

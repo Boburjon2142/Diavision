@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">FAQ</span>
+    <h1>Ko‘p beriladigan savollar</h1>
+</section>
+<section class="wrapper accordion-list">
+    {% for item in faq_items %}
+        <details class="card faq-item">
+            <summary>{{ item.question }}</summary>
+            <p>{{ item.answer }}</p>
+        </details>
+    {% empty %}
+        <details class="card faq-item" open><summary>Platforma tashxis qo‘yadimi?</summary><p>Yo‘q. Bu platforma tibbiy tashxis qo‘ymaydi va shifokor o‘rnini bosmaydi.</p></details>
+        <details class="card faq-item"><summary>AI qanday ishlaydi?</summary><p>AI qoidaviy tahlil, trend kuzatuvi va tushunarli tavsiyalar yaratish orqali yordam beradi.</p></details>
+    {% endfor %}
+</section>
+{% endblock %}

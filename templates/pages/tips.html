@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">Profilaktika tavsiyalari</span>
+    <h1>Diabetning oldini olish uchun amaliy tavsiyalar</h1>
+</section>
+<section class="wrapper section-grid three">
+    {% for article in articles %}
+        <article class="card">
+            <span class="badge">{{ article.category }}</span>
+            <h3>{{ article.title }}</h3>
+            <p>{{ article.excerpt }}</p>
+        </article>
+    {% empty %}
+        <article class="card"><h3>Kuniga 30 daqiqa yurish</h3><p>Jismoniy faollik shakar nazorati va vazn boshqaruviga yordam beradi.</p></article>
+        <article class="card"><h3>Shakarli ichimliklarni kamaytiring</h3><p>Suv va shakarsiz ichimliklar foydaliroq tanlov bo‘ladi.</p></article>
+        <article class="card"><h3>Uyquni barqaror qiling</h3><p>Muntazam uyqu metabolik sog‘liq uchun muhim omildir.</p></article>
+    {% endfor %}
+</section>
+{% endblock %}

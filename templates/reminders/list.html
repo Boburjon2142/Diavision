@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper app-showcase-grid">
+    <article class="phone-frame reminder-screen">
+        <div class="phone-top">
+            <span>9:41</span>
+            <span>Eslatmalar</span>
+        </div>
+        <div class="mini-card">
+            <strong>AI reminder optimization</strong>
+            <p>{{ ai_note }}</p>
+        </div>
+        <div class="screen-list">
+            {% for reminder in reminders %}
+                <div class="screen-list-item reminder-item">
+                    <div class="icon-bubble">{{ forloop.counter }}</div>
+                    <div>
+                        <strong>{{ reminder.title }}</strong>
+                        <small>{{ reminder.get_reminder_type_display }}</small>
+                    </div>
+                    <div class="time-stack">
+                        <b>{{ reminder.remind_time|time:"H:i" }}</b>
+                        <small>{{ reminder.get_state_display }}</small>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="screen-list-item">
+                    <div>
+                        <strong>Eslatmalar mavjud emas</strong>
+                        <small>Yangi eslatma qo‘shing.</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <a class="btn btn-primary full-width-btn" href="{% url 'reminders:create' %}">Yangi eslatma qo‘shish</a>
+    </article>
+    <article class="phone-frame assistant-menu-screen">
+        <div class="phone-top">
+            <span>DiaVision AI</span>
+            <span>IoT + AI</span>
+        </div>
+        <div class="chat-bubble">Bugun nima yeyish va qachon o‘lchash kerakligini AI tavsiya qiladi.</div>
+        <div class="menu-panel">
+            <a href="{% url 'nutrition:assistant' %}"><span>Ovqat tavsiyasi</span><b>›</b></a>
+            <a href="{% url 'tracker:list' %}"><span>Mashq va trend</span><b>›</b></a>
+            <a href="{% url 'riskcheck:create' %}"><span>Tahlil o‘tkazish</span><b>›</b></a>
+        </div>
+    </article>
+</section>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">AI food guidance</span>
+    <h1>Oldingi oziq-ovqat tahlillari</h1>
+</section>
+<section class="wrapper section-grid two">
+    {% for item in items %}
+        <article class="card">
+            <span class="badge badge-ai">{{ item.get_label_display }}</span>
+            <h3>{{ item.meal_name }}</h3>
+            <p>{{ item.ai_explanation }}</p>
+        </article>
+    {% empty %}
+        <article class="card"><p>Tarix hali shakllanmagan.</p></article>
+    {% endfor %}
+</section>
+{% endblock %}

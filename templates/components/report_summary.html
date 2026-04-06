@@ -1,0 +1,13 @@
+<article class="card report-card">
+    <div class="card-top">
+        <span class="badge">AI {{ report.type }}</span>
+        <strong>{{ report.average_sugar }} mmol/L</strong>
+    </div>
+    <h3>{{ report.executive_summary }}</h3>
+    <div class="metric-row">
+        <span class="metric-chip">Trend: {{ report.trend_direction }}</span>
+        <span class="metric-chip">Moslashuv: {{ report.adherence_score }}%</span>
+        <span class="metric-chip">Risk: {{ report.risk_trend }}</span>
+    </div>
+    <p>{{ report.recommendation }}</p>
+</article>

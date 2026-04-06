@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">Doctor Connect</span>
+    <h1>Shifokor yoki klinika bilan bog‘lanish so‘rovi</h1>
+    <p>Bu modul future-ready placeholder bo‘lib, foydalanuvchini keyingi konsultatsiya oqimiga tayyorlaydi.</p>
+</section>
+<section class="wrapper split-section">
+    <form method="post" class="card form-card">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">So‘rov yuborish</button>
+    </form>
+    <div class="stack">
+        <div class="card"><span class="badge badge-ai">AI signal</span><p>AI yuqori xavf yoki beqaror trend aniqlansa, Doctor Connect bo‘limiga yo‘naltirish mantiqi keyin kengaytiriladi.</p></div>
+        <div class="card"><span class="badge">Konsultatsiya tayyor</span><p>Hozircha bu modul polirovka qilingan talab yig‘ish interfeysi sifatida ishlaydi.</p></div>
+    </div>
+</section>
+{% endblock %}

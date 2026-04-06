@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper auth-shell">
+    <form method="post" class="card form-card">
+        {% csrf_token %}
+        <span class="eyebrow">Ro‘yxatdan o‘tish</span>
+        <h1>AI monitoring xizmatini boshlang</h1>
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Profil yaratish</button>
+    </form>
+</section>
+{% endblock %}

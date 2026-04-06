@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper auth-shell">
+    <form method="post" class="card form-card">
+        {% csrf_token %}
+        <span class="eyebrow">Kirish</span>
+        <h1>Shaxsiy AI dashboardga kiring</h1>
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Kirish</button>
+        <p>Hisobingiz yo‘qmi? <a href="{% url 'accounts:register' %}">Ro‘yxatdan o‘ting</a></p>
+    </form>
+</section>
+{% endblock %}

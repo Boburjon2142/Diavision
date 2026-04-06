@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">AI Risk Status</span>
+    <h1>{{ assessment.get_risk_level_display }} xavf darajasi</h1>
+    <p>AI bahosi: {{ assessment.risk_percentage }}%</p>
+</section>
+<section class="wrapper section-grid two">
+    <article class="card">
+        <div class="card-top"><span class="badge badge-ai">AI tavsiyasi</span></div>
+        <p>{{ assessment.recommendations|linebreaksbr }}</p>
+        <p>{{ assessment.next_steps }}</p>
+    </article>
+    {% include "components/risk_explanation.html" with assessment=assessment %}
+</section>
+{% endblock %}

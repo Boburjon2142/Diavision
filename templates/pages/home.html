@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %}DiaVision AI | AI va IoT yordamida diabet monitoringi{% endblock %}
+{% block content %}
+<section class="hero-section">
+    <div class="wrapper hero-grid">
+        <div class="hero-copy">
+            <span class="eyebrow">AI-powered raqamli sog‘liq platformasi</span>
+            <h1>Diabet xavfini erta ko‘ring, shakar nazoratini boshqaring va AI tavsiyalarini kundalik yordamchi sifatida ishlating.</h1>
+            <p>DiaVision AI foydalanuvchining xavf profili, shakar trendi, odatlari, oziqlanish odati va IoT qurilmalardan kelgan signal oqimini qoidaviy AI tahlili bilan birlashtirib, tushunarli va mas’uliyatli tavsiyalar beradi.</p>
+            <div class="cta-row">
+                <a class="btn btn-primary" href="{% url 'riskcheck:public_check' %}">AI Risk Check boshlash</a>
+                <a class="btn btn-soft" href="{% url 'accounts:register' %}">Shaxsiy kabinet ochish</a>
+            </div>
+            <div class="metric-row">
+                {% for stat in hero_stats %}
+                    <span class="metric-chip">{{ stat.value }} {{ stat.label }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="hero-phones">
+            <article class="phone-frame onboarding-screen demo-card">
+                <div class="phone-top">
+                    <span>9:41</span>
+                    <span>AI onboarding</span>
+                </div>
+                <div class="phone-body">
+                    <div class="orb orb-red"></div>
+                    <div class="orb orb-blue"></div>
+                    <h3>Diabetni nazorat qilish osonlashdi</h3>
+                    <p>AI sizni tahlil qiladi, xavf omillarini ko‘rsatadi va kundalik tavsiyalar beradi.</p>
+                    <a class="btn btn-primary" href="{% url 'accounts:register' %}">Boshlash</a>
+                    <small>Kirish | Ro‘yxatdan o‘tish</small>
+                </div>
+            </article>
+            <div class="stack hero-phone-stack">
+                <article class="phone-frame app-screen">
+                    <div class="phone-top">
+                        <span>Salom, Akmal!</span>
+                        <span>AI faol</span>
+                    </div>
+                    <div class="status-card">
+                        <span class="badge badge-ai">Qand darajasi</span>
+                        <strong>6.2 mmol/L</strong>
+                        <span class="status-pill">Normal</span>
+                    </div>
+                    <div class="mini-card">
+                        <strong>AI tavsiyasi</strong>
+                        <p>Bugun kamida 8 stakan suv ichishga harakat qiling.</p>
+                    </div>
+                    <div class="iot-strip">
+                        <span class="iot-dot"></span>
+                        <span>IoT Sync: glucometer ulandi</span>
+                    </div>
+                    <div class="mini-metrics">
+                        <span>4,530 qadam</span>
+                        <span>1,250 kaloriya</span>
+                    </div>
+                    <div class="wave-chart">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </article>
+                <article class="phone-frame food-screen">
+                    <div class="phone-top">
+                        <span>Ovqatlanish</span>
+                        <span>AI oziq-ovqat</span>
+                    </div>
+                    <div class="food-grid">
+                        <div class="food-tile">
+                            <div class="food-art green"></div>
+                            <strong>Sabzavotli salat</strong>
+                            <small>Tavsiya etiladi</small>
+                        </div>
+                        <div class="food-tile">
+                            <div class="food-art orange"></div>
+                            <strong>Tovuq go‘shti</strong>
+                            <small>Muvozanatli</small>
+                        </div>
+                    </div>
+                    <div class="food-list">
+                        <div><span>Avokado</span><b>Yaxshi</b></div>
+                        <div><span>Konfettar</span><b>Kamaytiring</b></div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="wrapper section-grid three">
+    <article class="card app-card iot-card">
+        <span class="badge badge-ai">IoT Device Hub</span>
+        <h3>Qurilmalar bilan jonli almashinuv</h3>
+        <p>Smart glucometer, aqlli soat va bosim qurilmasidan kelgan oqim AI monitoringiga uzatiladi.</p>
+        <div class="iot-list">
+            <div><span>Bluetooth glucometer</span><b>Ulangan</b></div>
+            <div><span>Smart band</span><b>So‘nggi sync: 2 daqiqa oldin</b></div>
+            <div><span>Uy sensori gateway</span><b>Trend yuborildi</b></div>
+        </div>
+    </article>
+    <article class="card app-card">
+        <span class="badge badge-ai">AI + IoT signal</span>
+        <h3>AI sensor ma’lumotini sharhlaydi</h3>
+        <p>IoT qurilmadan kelgan yangi o‘lchovlar AI trend insight, alert va haftalik xulosalarda darhol ko‘rinadi.</p>
+    </article>
+    <article class="card app-card">
+        <span class="badge badge-ai">Remote monitoring</span>
+        <h3>Masofaviy kuzatuvga tayyor</h3>
+        <p>Platforma shifokor va jamoat salomatligi uchun sensor asosidagi kuzatuv modeliga mos arxitektura bilan ishlab chiqilgan.</p>
+    </article>
+</section>
+
+<section class="wrapper section-grid four">
+    <article class="card app-card">
+        <span class="badge badge-ai">AI Food Analysis</span>
+        <h3>Mahalliy taomlar uchun tahlil</h3>
+        <p>Osh, somsa, non, shashlik va boshqa taomlar bo‘yicha AI glyukemik xavfni baholaydi.</p>
+    </article>
+    <article class="card app-card">
+        <span class="badge badge-ai">AI Safety Alert</span>
+        <h3>Signal va ogohlantirishlar</h3>
+        <p>AI noodatiy ko‘rsatkichlarni ko‘rsa, kuzatuvni kuchaytirish bo‘yicha ogohlantiradi.</p>
+    </article>
+    <article class="card app-card">
+        <span class="badge badge-ai">AI Habit Coach</span>
+        <h3>Odatlarni yaxshilash</h3>
+        <p>Uyqu, suv, yurish va eslatmalar asosida kichik, amaliy tavsiyalar beriladi.</p>
+    </article>
+    <article class="card app-card">
+        <span class="badge badge-ai">Public Health Ready</span>
+        <h3>Jamoat salomatligi uchun mos</h3>
+        <p>Platforma aholi kesimida xavf taqsimoti va alert monitoringini ko‘rsatish uchun tayyor.</p>
+    </article>
+</section>
+
+<section class="wrapper split-section">
+    <div>
+        <span class="eyebrow">AI qanday ishlaydi?</span>
+        <h2>Qoidaviy AI layer va IoT signal oqimi</h2>
+        <p>Hozirgi MVP izohlanadigan servislar orqali ishlaydi: risk engine, trend engine, food engine, habit engine va alert engine. IoT qurilma oqimi uchun ko‘rinadigan sync qatlamlari mavjud va keyinchalik real device API yoki ML model bilan kengaytiriladi.</p>
+    </div>
+    <div class="stack">
+        <div class="card"><strong>1. Ma’lumot qabul qilish</strong><p>Profil, odatlar, qo‘lda kiritilgan o‘lchovlar va IoT sensor ma’lumotlari yig‘iladi.</p></div>
+        <div class="card"><strong>2. AI izohli tahlil</strong><p>Risk omillari, trendlar, sensor tebranishlari va odatlar bo‘yicha tushunarli sabablar shakllantiriladi.</p></div>
+        <div class="card"><strong>3. Tavsiya va signal</strong><p>Natijalar dashboard, hisobot, reminder va device sync kartalarida faol ko‘rinadi.</p></div>
+    </div>
+</section>
+
+<section class="wrapper section-grid two">
+    <article class="card">
+        <span class="badge">AI haftalik xulosa</span>
+        <h3>{{ report_preview.weekly_title }}</h3>
+        <p>{{ report_preview.weekly_summary }}</p>
+    </article>
+    <article class="card">
+        <span class="badge">AI oylik sog‘liq sharhi</span>
+        <h3>Monitoring natijasi</h3>
+        <p>{{ report_preview.monthly_summary }}</p>
+    </article>
+</section>
+
+<section class="wrapper trust-band">
+    <div>
+        <span class="eyebrow">Ishonchli platforma</span>
+        <h2>Rasmiy, sokin va tibbiy mas’uliyatli UX</h2>
+        <p>{{ medical_disclaimer }}</p>
+    </div>
+    <a class="btn btn-primary" href="{% url 'pages:doctor_connect' %}">Shifokor bilan bog‘lanish</a>
+</section>
+{% endblock %}

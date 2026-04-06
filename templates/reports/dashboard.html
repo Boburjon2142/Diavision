@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">Reports Dashboard</span>
+    <h1>Hisobotlar va executive summary</h1>
+</section>
+<section class="wrapper section-grid two">
+    {% include "components/report_summary.html" with report=weekly %}
+    {% include "components/report_summary.html" with report=monthly %}
+</section>
+<section class="wrapper">
+    <a class="btn btn-soft" href="{% url 'reports:printable' 'weekly' %}">Haftalik print view</a>
+    <a class="btn btn-soft" href="{% url 'reports:printable' 'monthly' %}">Oylik print view</a>
+</section>
+{% endblock %}

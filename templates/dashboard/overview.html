@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper dashboard-hero">
+    <div>
+        <span class="eyebrow">Dashboard</span>
+        <h1>AI va IoT sog‘liq monitoringi faol</h1>
+        <p>Joriy xavf, shakar trendi, qurilma sync holati, eslatmalar va AI tavsiyalar bir joyda jamlangan.</p>
+    </div>
+    <article class="phone-frame dashboard-phone">
+        <div class="phone-top">
+            <span>Salom, {{ request.user.first_name|default:request.user.username }}!</span>
+            <span>AI on</span>
+        </div>
+        <div class="status-card status-card-wide">
+            <span class="badge badge-ai">Qand darajasi</span>
+            <strong>{% if readings %}{{ readings.0.value }}{% else %}6.2{% endif %} mmol/L</strong>
+            <span class="status-pill">Nazoratda</span>
+        </div>
+        <div class="mini-card">
+            <strong>{{ alert_status.title }}</strong>
+            <p>{{ alert_status.message }}</p>
+        </div>
+        <div class="iot-strip">
+            <span class="iot-dot"></span>
+            <span>IoT Sync: smart glucometer va band ma’lumoti yangilandi</span>
+        </div>
+        <div class="mini-metrics">
+            <span>Risk {% if latest_assessment %}{{ latest_assessment.risk_percentage }}%{% else %}--{% endif %}</span>
+            <span>Lifestyle {{ lifestyle.total }}</span>
+        </div>
+        <div class="wave-chart compact">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+        </div>
+    </article>
+</section>
+
+<section class="wrapper section-grid four app-dashboard-grid">
+    {% include "components/dashboard_card.html" with badge="AI Risk Score" tone="ai" title="Joriy xavf" value=latest_assessment.risk_percentage|default:"—" text=latest_assessment.ai_explanation|default:"AI xavf bahosi hali mavjud emas." %}
+    {% include "components/dashboard_card.html" with badge="Sugar Status Today" title="So‘nggi o‘lchovlar" value=readings|length text="Shakar monitoringi yozuvlari" %}
+    {% include "components/dashboard_card.html" with badge="IoT Sync Status" tone="ai" title="Qurilma holati" value="3" text="Ulangan qurilmalar: glucometer, smart band, bosim sensori." %}
+    {% include "components/dashboard_card.html" with badge="Lifestyle Score" title="Turmush tarzi balli" value=lifestyle.total text=lifestyle.coach_text %}
+    {% include "components/dashboard_card.html" with badge="Reminder Status" title="Bugungi eslatmalar" value=reminders|length text="Faol va rejalashtirilgan eslatmalar" %}
+</section>
+
+<section class="wrapper section-grid two">
+    <div class="stack">
+        <article class="card app-card">
+            <div class="card-top"><span class="badge badge-ai">AI Latest Insight</span><strong>{{ weekly.average_sugar }} mmol/L</strong></div>
+            <h3>{{ weekly.executive_summary }}</h3>
+            <p>{{ weekly.recommendation }}</p>
+        </article>
+        <article class="card app-card">
+            <div class="card-top"><span class="badge badge-ai">Food Safety Suggestion</span></div>
+            <p>AI oziq-ovqat tahlili bo‘yicha bugun oq un va shakarli ichimliklarni kamaytirish tavsiya etiladi.</p>
+        </article>
+    </div>
+    <div class="stack">
+        <article class="card app-card">
+            <div class="card-top"><span class="badge badge-ai">IoT device stream</span></div>
+            <p>So‘nggi sync: 08:42. Glucometer qiymati, yurak urishi va qadamlar birlashtirilib AI monitoring paneliga uzatildi.</p>
+        </article>
+        <article class="card app-card">
+            <div class="card-top"><span class="badge">Weekly AI Summary</span></div>
+            <p>Trend: {{ weekly.trend_direction }} | Moslashuv: {{ weekly.adherence_score }}%</p>
+            <p>Risk trendi: {{ weekly.risk_trend }}</p>
+        </article>
+    </div>
+</section>
+
+<section class="wrapper section-grid two">
+    <article class="card app-card">
+        <div class="card-top"><span class="badge badge-ai">AI insights timeline</span></div>
+        <ul class="timeline-list">
+            {% for insight in insights %}
+                <li><strong>{{ insight.module }}</strong><p>{{ insight.summary }}</p></li>
+            {% empty %}
+                <li><strong>AI kuzatuvi</strong><p>Yangi insightlar risk, tracker va hisobot modullaridan paydo bo‘ladi.</p></li>
+                <li><strong>AI habit coach</strong><p>{{ lifestyle.coach_text }}</p></li>
+            {% endfor %}
+        </ul>
+    </article>
+    <article class="card app-card">
+        <div class="card-top"><span class="badge">Quick actions</span></div>
+        <div class="quick-actions">
+            <a class="btn btn-soft" href="{% url 'riskcheck:create' %}">Yangi risk tahlili</a>
+            <a class="btn btn-soft" href="{% url 'tracker:create' %}">Shakar qo‘shish</a>
+            <a class="btn btn-soft" href="{% url 'reminders:create' %}">Eslatma yaratish</a>
+            <a class="btn btn-soft" href="{% url 'reports:dashboard' %}">Hisobotlar</a>
+        </div>
+        <p>Tizim bo‘yicha kelgan Doctor Connect so‘rovlari: {{ doctor_request_count }}</p>
+    </article>
+</section>
+{% endblock %}

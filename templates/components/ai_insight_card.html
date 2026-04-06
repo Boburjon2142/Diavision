@@ -1,0 +1,8 @@
+<article class="card ai-card">
+    <div class="card-top">
+        <span class="badge badge-ai">AI insight</span>
+        {% if title %}<strong>{{ title }}</strong>{% endif %}
+    </div>
+    <p>{{ text }}</p>
+    {% if meta %}<small>{{ meta }}</small>{% endif %}
+</article>

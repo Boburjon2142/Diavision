@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper app-showcase-grid">
+    <article class="phone-frame food-screen static-food-screen">
+        <div class="phone-top">
+            <span>Ovqatlanish</span>
+            <span>AI oziq-ovqat</span>
+        </div>
+        <form method="post" class="screen-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary full-width-btn" type="submit">AI tahlil qilish</button>
+        </form>
+        <div class="food-grid">
+            <div class="food-tile">
+                <div class="food-art green"></div>
+                <strong>Sabzavotli salat</strong>
+                <small>Tavsiya etiladi</small>
+            </div>
+            <div class="food-tile">
+                <div class="food-art orange"></div>
+                <strong>Tovuq go‘shti</strong>
+                <small>Muvozanatli</small>
+            </div>
+        </div>
+        <div class="food-list">
+            <div><span>Avokado</span><b>Yaxshi</b></div>
+            <div><span>Konfettar</span><b>Kamaytiring</b></div>
+        </div>
+    </article>
+    <article class="phone-frame result-screen">
+        <div class="phone-top">
+            <span>Shaxsiy tavsiyalar</span>
+            <span>AI</span>
+        </div>
+        {% if result %}
+            <div class="mini-card">
+                <strong>{{ result.label_display }}</strong>
+                <p>{{ result.explanation }}</p>
+            </div>
+            <div class="screen-list">
+                <div class="screen-list-item">
+                    <div>
+                        <strong>Porsiya</strong>
+                        <small>{{ result.portion }}</small>
+                    </div>
+                </div>
+                <div class="screen-list-item">
+                    <div>
+                        <strong>Alternativalar</strong>
+                        <small>{{ result.alternatives_text }}</small>
+                    </div>
+                </div>
+                <div class="screen-list-item">
+                    <div>
+                        <strong>AI ishonch ko‘rsatkichi</strong>
+                        <small>{{ result.confidence }}</small>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="recommendation-illustration"></div>
+            <div class="mini-card">
+                <strong>AI sizni tahlil qiladi</strong>
+                <p>Taom kiriting va platforma glyukemik xavf, porsiya va sog‘lom alternativani chiqaradi.</p>
+            </div>
+        {% endif %}
+    </article>
+</section>
+{% endblock %}

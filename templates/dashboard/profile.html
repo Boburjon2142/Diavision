@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper app-showcase-grid">
+    <article class="phone-frame profile-screen">
+        <div class="phone-top">
+            <span>9:41</span>
+            <span>Profilni yangilash</span>
+        </div>
+        <form method="post" class="screen-form profile-form">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary full-width-btn" type="submit">Keyingisi</button>
+        </form>
+    </article>
+    <article class="phone-frame onboarding-screen soft-onboarding">
+        <div class="phone-body">
+            <div class="recommendation-illustration"></div>
+            <h3>Shaxsiy tavsiyalar</h3>
+            <p>Profil ma’lumotlari AI va IoT oqimlari bilan birlashib, yanada aniqroq tavsiya va signal hosil qiladi.</p>
+            <a class="btn btn-primary" href="{% url 'dashboard:overview' %}">Dashboardga qaytish</a>
+        </div>
+    </article>
+</section>
+{% endblock %}

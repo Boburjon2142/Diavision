@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="wrapper page-hero narrow">
+    <span class="eyebrow">Public health analytics</span>
+    <h1>Boshqaruv va monitoring paneli</h1>
+</section>
+<section class="wrapper section-grid four">
+    <article class="card"><span class="badge">Yuqori xavf</span><h3>{{ risk_counts.high }}</h3></article>
+    <article class="card"><span class="badge">O‘rta xavf</span><h3>{{ risk_counts.medium }}</h3></article>
+    <article class="card"><span class="badge">Past xavf</span><h3>{{ risk_counts.low }}</h3></article>
+    <article class="card"><span class="badge badge-ai">AI loglar</span><h3>{{ ai_logs }}</h3></article>
+</section>
+<section class="wrapper section-grid two">
+    <article class="card">
+        <h3>Recent alerts</h3>
+        <ul class="clean-list">
+            {% for alert in alerts %}
+                <li>{{ alert.title }} - {{ alert.level }}</li>
+            {% empty %}
+                <li>Alertlar yo‘q.</li>
+            {% endfor %}
+        </ul>
+    </article>
+    <article class="card">
+        <h3>Doctor Connect requests</h3>
+        <ul class="clean-list">
+            {% for item in doctor_requests %}
+                <li>{{ item.full_name }} - {{ item.region }}</li>
+            {% empty %}
+                <li>So‘rovlar yo‘q.</li>
+            {% endfor %}
+        </ul>
+    </article>
+</section>
+{% endblock %}
