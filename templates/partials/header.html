@@ -2,14 +2,14 @@
     <div class="wrapper nav-row">
         <a class="brand" href="{% url 'pages:home' %}">
             <span class="brand-mark">AI</span>
-            <span>
+            <span class="brand-copy">
                 <strong>DiaVision AI</strong>
                 <small>AI va IoT asosidagi sog‘liq platformasi</small>
             </span>
         </a>
         <nav class="desktop-nav" aria-label="Asosiy navigatsiya">
             {% for item in public_nav %}
-                <a href="{{ item.url }}">{{ item.title }}</a>
+                <a class="{% if request.path == item.url %}is-active{% endif %}" href="{{ item.url }}">{{ item.title }}</a>
             {% endfor %}
         </nav>
         <div class="header-actions">
@@ -20,5 +20,18 @@
                 <a class="btn btn-primary" href="{% url 'accounts:register' %}">Ro‘yxatdan o‘tish</a>
             {% endif %}
         </div>
+    </div>
+    <div class="wrapper mobile-quickbar" aria-label="Tezkor mobil navigatsiya">
+        {% if request.user.is_authenticated %}
+            <a class="{% if '/dashboard/' in request.path %}is-active{% endif %}" href="{% url 'dashboard:overview' %}">Boshqaruv</a>
+            <a class="{% if '/tracker/' in request.path %}is-active{% endif %}" href="{% url 'tracker:list' %}">Shakar</a>
+            <a class="{% if '/nutrition/' in request.path %}is-active{% endif %}" href="{% url 'nutrition:assistant' %}">Ovqat</a>
+            <a class="{% if '/reports/' in request.path %}is-active{% endif %}" href="{% url 'reports:dashboard' %}">Hisobot</a>
+        {% else %}
+            <a class="{% if request.path == '/' %}is-active{% endif %}" href="{% url 'pages:home' %}">Bosh sahifa</a>
+            <a class="{% if '/risk/' in request.path %}is-active{% endif %}" href="{% url 'riskcheck:public_check' %}">AI Risk</a>
+            <a class="{% if '/nutrition/' in request.path %}is-active{% endif %}" href="{% url 'nutrition:assistant' %}">Ovqat</a>
+            <a class="{% if '/contact/' in request.path %}is-active{% endif %}" href="{% url 'pages:contact' %}">Aloqa</a>
+        {% endif %}
     </div>
 </header>
